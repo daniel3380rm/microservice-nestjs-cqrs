@@ -1,0 +1,56 @@
+version: '3.8'
+
+services:
+  redis:
+    image: redis:6
+    ports:
+      - "6379:6379"
+  wallet-service:
+    build:
+      context: ./wallet-service
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - DB_HOST=postgres
+      - DB_PORT=32615
+      - DB_USERNAME=root
+      - DB_PASSWORD=7V36pDHYak9uKbvCZXk5mX0J
+      - DB_NAME=postgres
+      - RABBITMQ_URL=amqp://rabbitmq:5672
+    depends_on:
+      - postgres
+      - rabbitmq
+
+  caller-service:
+    build:
+      context: ./caller-service
+      dockerfile: Dockerfile
+    ports:
+      - "3001:3001"
+    environment:
+      - NODE_ENV=production
+      - RABBITMQ_URL=amqp://rabbitmq:5672
+      - WALLET_SERVICE_BASE_URL=http://wallet-service:3000
+    depends_on:
+      - wallet-service
+      - rabbitmq
+
+  postgres:
+    image: postgres:13
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=7V36pDHYak9uKbvCZXk5mX0J
+      - POSTGRES_DB=postgres
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+
+volumes:
+  postgres_data:
