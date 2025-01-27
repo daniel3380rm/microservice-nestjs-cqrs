@@ -1,93 +1,74 @@
-# Wallet Service Project
+Online Store API
+This project is an API for an online store built using NestJS and MongoDB. It provides features for managing products, orders, and users.
 
-## توضیحات کلی
+Project Structure
+The project consists of the following modules:
 
-این پروژه یک سرویس مدیریت کیف پول است که با استفاده از NestJS، PostgreSQL، Redis و RabbitMQ پیاده‌سازی شده است. این سرویس قابلیت ایجاد، به‌روزرسانی و تحلیل کیف پول‌های ارز دیجیتال را فراهم می‌کند.
+AppModule: The main module that connects other modules.
+ProductModule: Handles product management, including creating, updating, deleting, and retrieving product information.
+PurchaseModule: Manages purchases and orders.
+UserModule: Handles user management and authentication.
+SharedModule: Includes shared services and components used across other modules.
+How to Run the Project
+Ensure that Node.js and MongoDB are installed on your system.
 
-## ویژگی‌های اصلی
+Clone the project:
 
-- تحلیل تراکنش‌های کیف پول
-- ذخیره‌سازی داده‌ها در PostgreSQL
-- استفاده از Redis برای کش‌گذاری
-- استفاده از RabbitMQ برای مدیریت صف و پردازش ناهمگام
-- API RESTful برای تعامل با سرویس
-- ایجاد و مدیریت کیف پول‌های ارز دیجیتال با پشتیبانی از چندین شبکه بلاکچین
-- تحلیل پیشرفته تراکنش‌های کیف پول شامل:
-  - محاسبه میانگین مبلغ خرید، نرخ موفقیت، سود خالص و زمان نگهداری
-  - شناسایی و دسته‌بندی فعالیت‌های معاملاتی (مانند "Dex Trader")
-  - تشخیص فعالیت‌های مشکوک به ربات
-- تحلیل عملکرد توکن‌ها شامل:
-  - شناسایی توکن‌های پرسود
-  - محاسبه قیمت‌های ورود و خروج
-  - تحلیل الگوهای خرید و فروش
+bash
+Copy
+Edit
+git clone https://github.com/daniel3380rm/task-blue
+Install dependencies:
 
-## نحوه راه‌اندازی
+Copy
+Edit
+npm install
+Create a .env file at the root of the project and add the following environment variables:
 
-1. نصب وابستگی‌ها:
-   ```
-   npm install
-   ```
+bash
+Copy
+Edit
+MONGODB_URI=mongodb://localhost:27017/online-store
+Run the project:
 
-2. تنظیم فایل `.env`:
-   ```
-   DATABASE_URL=postgresql://root:7V36pDHYak9uKbvCZXk5mX0J@apo.liara.cloud:32615/postgres
-   REDIS_HOST=apo.liara.cloud
-   REDIS_PORT=30000
-   RABBITMQ_URL=amqp://localhost:5672
-   ```
+arduino
+Copy
+Edit
+npm run start:dev
+yarn run start:dev
+The API will be accessible at http://localhost:3000.
 
-3. اجرای برنامه:
-   ```
-   npm run start:dev
-   ```
+Key Features
+Clean Architecture: The project is implemented following Clean Architecture principles, ensuring separation of concerns, maintainability, and scalability.
 
-## API‌ها
+CQRS Pattern: Implements the Command Query Responsibility Segregation (CQRS) pattern, enabling better scalability and separation of read and write operations.
 
-- `POST /wallets`: ایجاد کیف پول جدید از روی جیسون
-- `GET /wallets`: دریافت لیست تمام کیف پول‌ها
-- `GET /wallets/:id`: دریافت اطلاعات یک کیف پول خاص
-- `GET /analyze`: شروع تحلیل تراکنش‌های کیف پول
+Swagger Integration: The API documentation is generated using Swagger, allowing easy testing and exploration of the API.
 
-## راه‌حل‌های مقیاس‌پذیری
+Validation: Uses class-validator for validating incoming data, ensuring data integrity and security.
 
-1. **استفاده از Redis برای کش‌گذاری**: 
-   برای کاهش بار بر روی پایگاه داده و افزایش سرعت پاسخ‌گویی، از Redis برای ذخیره‌سازی موقت داده‌های پرکاربرد استفاده شده است.
+Testing: Unit and integration tests are written using Jest to ensure code reliability and functionality.
 
-2. **پردازش ناهمگام با RabbitMQ**: 
-   برای عملیات‌های زمان‌بر مانند تحلیل تراکنش‌ها، از RabbitMQ برای ایجاد صف و پردازش ناهمگام استفاده شده است. این امر امکان مقیاس‌پذیری افقی را فراهم می‌کند.
+Default User Management: Includes a service for creating and managing a default user, making it easier to work with the API during initial development.
 
-3. **معماری ماژولار**: 
-   پروژه با استفاده از معماری ماژولار NestJS ساخته شده است که امکان توسعه و نگهداری آسان‌تر را فراهم می‌کند.
+TypeScript: The entire project is written in TypeScript, enabling safer and more reliable development with fewer errors.
 
-4. **استفاده از ORM Sequelize**: 
-   برای مدیریت بهتر ارتباط با پایگاه داده و امکان تغییر آسان پایگاه داده در آینده، از Sequelize استفاده شده است.
+Highlights
+Scalable Architecture: The project structure is designed to facilitate easy development and addition of new features.
 
-5. **تنظیمات محیطی**: 
-   استفاده از فایل `.env` برای تنظیمات محیطی، امکان استقرار آسان در محیط‌های مختلف را فراهم می‌کند.
+Best Practices for NestJS: Leverages advanced features of NestJS such as Dependency Injection, Decorators, and Pipes.
 
-6. **لاگینگ و مانیتورینگ پیشرفته**: 
-   پیاده‌سازی سیستم لاگینگ ساختاریافته و قابل جستجو با استفاده از ELK stack، همراه با داشبوردهای مانیتورینگ برای نظارت بر عملکرد سیستم.
+Testability: The project structure simplifies writing and executing tests.
 
-## نحوه مقیاس‌پذیری
+Automated Documentation: Swagger automatically generates API documentation, making it easier for front-end developers to interact with the API.
 
-برای مقیاس‌پذیری بیشتر، می‌توان از روش‌های زیر استفاده کرد:
+Flexibility: MongoDB as the database offers high flexibility in data storage.
 
-1. **استقرار چندگانه**: 
-   می‌توان چندین نمونه از سرویس را پشت یک لود بالانسر اجرا کرد.
-
-2. **جداسازی سرویس‌ها**: 
-   در صورت نیاز، می‌توان بخش‌های مختلف (مثلاً تحلیل تراکنش‌ها) را به سرویس‌های جداگانه تبدیل کرد.
+This project demonstrates the ability to design and implement a scalable, secure, and maintainable API that can be used for large and complex projects.
 
 
-## تست‌ها
-
-برای اجرای تست‌ها:
-
-npm run test
 
 
-## مستندات API
 
-مستندات کامل API با استفاده از Swagger در آدرس زیر قابل دسترسی است:
 
-http://localhost:3000/api
+
