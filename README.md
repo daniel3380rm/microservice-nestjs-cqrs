@@ -1,74 +1,74 @@
-Online Store API
-This project is an API for an online store built using NestJS and MongoDB. It provides features for managing products, orders, and users.
+# Online Store API
 
-Project Structure
-The project consists of the following modules:
+This project is an API for an online store built using NestJS and MongoDB. The API provides functionalities to manage products, orders, and users.
 
-AppModule: The main module that connects other modules.
-ProductModule: Handles product management, including creating, updating, deleting, and retrieving product information.
-PurchaseModule: Manages purchases and orders.
-UserModule: Handles user management and authentication.
-SharedModule: Includes shared services and components used across other modules.
-How to Run the Project
-Ensure that Node.js and MongoDB are installed on your system.
+## Project Structure
 
-Clone the project:
+The project is organized into the following modules:
 
-bash
-Copy
-Edit
-git clone https://github.com/daniel3380rm/task-blue
-Install dependencies:
+1. **AppModule**: The main module that connects other modules.
+2. **ProductModule**: Handles product management, including creating, updating, deleting, and retrieving product information.
+3. **PurchaseModule**: Manages purchases and orders.
+4. **UserModule**: Manages users and authentication.
+5. **SharedModule**: Contains shared services and components used across other modules.
 
-Copy
-Edit
-npm install
-Create a .env file at the root of the project and add the following environment variables:
+## How to Run the Project
 
-bash
-Copy
-Edit
-MONGODB_URI=mongodb://localhost:27017/online-store
-Run the project:
+1. Ensure that Node.js and MongoDB are installed on your system.
 
-arduino
-Copy
-Edit
-npm run start:dev
-yarn run start:dev
-The API will be accessible at http://localhost:3000.
+2. Clone the project:
 
-Key Features
-Clean Architecture: The project is implemented following Clean Architecture principles, ensuring separation of concerns, maintainability, and scalability.
+   ```bash
+   git clone https://github.com/daniel3380rm/task-blue
+   ```
 
-CQRS Pattern: Implements the Command Query Responsibility Segregation (CQRS) pattern, enabling better scalability and separation of read and write operations.
+3. Install dependencies:
 
-Swagger Integration: The API documentation is generated using Swagger, allowing easy testing and exploration of the API.
+   ```bash
+   npm install
+   ```
 
-Validation: Uses class-validator for validating incoming data, ensuring data integrity and security.
+4. Create a `.env` file in the root of the project and add the following environment variables:
 
-Testing: Unit and integration tests are written using Jest to ensure code reliability and functionality.
+   ```plaintext
+   MONGODB_URI=mongodb://localhost:27017/online-store
+   ```
 
-Default User Management: Includes a service for creating and managing a default user, making it easier to work with the API during initial development.
+5. Start the project:
 
-TypeScript: The entire project is written in TypeScript, enabling safer and more reliable development with fewer errors.
+   ```bash
+   npm run start:dev
+   yarn run start:dev
+   ```
 
-Highlights
-Scalable Architecture: The project structure is designed to facilitate easy development and addition of new features.
+6. The API will now be accessible at `http://localhost:3000`.
 
-Best Practices for NestJS: Leverages advanced features of NestJS such as Dependency Injection, Decorators, and Pipes.
+## Key Features
 
-Testability: The project structure simplifies writing and executing tests.
+1. **Clean Architecture**: The project is implemented using Clean Architecture principles, ensuring separation of layers and enhancing maintainability and scalability.
 
-Automated Documentation: Swagger automatically generates API documentation, making it easier for front-end developers to interact with the API.
+2. **CQRS**: The Command Query Responsibility Segregation (CQRS) pattern is implemented, enabling better scalability and separation of read and write operations.
 
-Flexibility: MongoDB as the database offers high flexibility in data storage.
+3. **Swagger**: API documentation is generated using Swagger, making it easy to test and explore the API.
 
-This project demonstrates the ability to design and implement a scalable, secure, and maintainable API that can be used for large and complex projects.
+4. **Validation**: Input data validation is handled using `class-validator`, ensuring data integrity and security.
 
+5. **Testing**: Unit and integration tests are written using Jest, ensuring code reliability and correctness.
 
+6. **Default User Management**: A service for creating and managing a default user is included, simplifying initial API usage during development.
 
+7. **TypeScript**: The entire project is written in TypeScript, providing type safety and reducing potential bugs.
 
+## Highlights
 
+1. **Scalable Architecture**: The project structure is designed to facilitate easy development and addition of new features.
 
+2. **Best Practices with NestJS**: Advanced NestJS features such as Dependency Injection, Decorators, and Pipes are utilized.
 
+3. **Testability**: The project structure supports easy test writing and execution.
+
+4. **Automatic Documentation**: Using Swagger, API documentation is automatically generated, streamlining collaboration with front-end developers.
+
+5. **Flexibility**: MongoDB as the database provides high flexibility in data storage.
+
+This project demonstrates the ability to design and implement a scalable, secure, and maintainable API, suitable for large and complex projects.
